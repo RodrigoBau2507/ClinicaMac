@@ -1,6 +1,5 @@
 import Paciente from "../models/Paciente.js";
 
-//Para el registro del paciente y validacion de la informacion y alamcenamineto de la misma
 const agregarPaciente = async (req, res) => {
   const paciente = new Paciente(req.body);
   paciente.veterinario = req.veterinario._id;

@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import generarId from "../helpers/generarId.js";
 
-//Para los datos del veterinario
 const veterinarioSchema = mongoose.Schema({
   nombre: {
     type: String,

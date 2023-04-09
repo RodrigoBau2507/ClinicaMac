@@ -26,3 +26,4 @@ router.put("/perfil/:id", checkAuth, actualizarPerfil);
 router.put("/actualizar-password", checkAuth, actualizarPassword);
 
 export default router;
+
