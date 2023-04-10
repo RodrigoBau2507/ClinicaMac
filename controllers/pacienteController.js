@@ -9,7 +9,16 @@ const agregarPaciente = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+
+
+  const existeUsuario = await Doctor.findOne({ nombre, apellido });
+  if (existeUsuario) {
+    const error = new Error("Usuario ya registrado");
+    return res.status(400).json({ msg: error.message });
+  }
 };
+
+
 
 const obtenerPacientes = async (req, res) => {
   const pacientes = await Paciente.find()

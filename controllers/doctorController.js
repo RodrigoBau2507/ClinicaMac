@@ -15,7 +15,7 @@ const registrar = async (req, res) => {
   }
 
   try {
-    // Guardar un Nuevo Veterinario
+    // Guardar un Nuevo Doctor
     const doctor = new Doctor(req.body);
     const doctorGuardado = await doctor.save();
 
@@ -182,7 +182,7 @@ const actualizarPassword = async (req, res) => {
   const { id } = req.doctor;
   const { pwd_actual, pwd_nuevo } = req.body;
 
-  // Comprobar que el veterinario existe
+  // Comprobar que el doctor existe
   const doctor = await Doctor.findById(id);
   if (!doctor) {
     const error = new Error("Hubo un error");
