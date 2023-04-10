@@ -6,7 +6,7 @@ const pacientesSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    propietario: {
+    apellido: {
       type: String,
       required: true,
     },
@@ -19,13 +19,17 @@ const pacientesSchema = mongoose.Schema(
       required: true,
       default: Date.now(),
     },
+    telefono:{
+      type: String,
+      required: true
+    },
     sintomas: {
       type: String,
       required: true,
     },
-    veterinario: {
+    doctor: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Veterinario",
+      ref: "Doctor",
     },
   },
   {

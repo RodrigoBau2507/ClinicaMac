@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import generarId from "../helpers/generarId.js";
 
-const veterinarioSchema = mongoose.Schema({
+const doctorSchema = mongoose.Schema({
   nombre: {
     type: String,
     required: true,
@@ -37,7 +37,7 @@ const veterinarioSchema = mongoose.Schema({
   },
 });
 
-veterinarioSchema.pre("save", async function (next) {
+doctorSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -45,11 +45,11 @@ veterinarioSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-veterinarioSchema.methods.comprobarPassword = async function (
+doctorSchema.methods.comprobarPassword = async function (
   passwordFormulario
 ) {
   return await bcrypt.compare(passwordFormulario, this.password);
 };
 
-const Veterinario = mongoose.model("Veterinario", veterinarioSchema);
-export default Veterinario;
+const Doctor = mongoose.model("Doctor", veterinarioSchema);
+export default Doctor;

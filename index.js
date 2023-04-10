@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import conectarDB from "./config/db.js";
-import veterinarioRoutes from "./routes/veterinarioRoutes.js";
+import doctorRoutes from "./routes/doctorRoutes.js"
 import pacienteRoutes from "./routes/pacienteRoutes.js";
 
 const app = express();
@@ -31,7 +31,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use("/api/veterinarios", veterinarioRoutes);
+app.use("/api/doctores", doctorRoutes);
 app.use("/api/pacientes", pacienteRoutes);
 
 const PORT = process.env.PORT || 4000;

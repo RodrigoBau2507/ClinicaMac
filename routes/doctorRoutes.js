@@ -10,7 +10,7 @@ import {
   nuevoPassword,
   actualizarPerfil,
   actualizarPassword,
-} from "../controllers/veterinarioController.js";
+} from "../controllers/doctorController";
 import checkAuth from "../middleware/authMiddleware.js";
 
 // área publica

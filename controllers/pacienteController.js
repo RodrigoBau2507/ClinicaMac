@@ -2,7 +2,7 @@ import Paciente from "../models/Paciente.js";
 
 const agregarPaciente = async (req, res) => {
   const paciente = new Paciente(req.body);
-  paciente.veterinario = req.veterinario._id;
+  paciente.doctor = req.doctor._id;
   try {
     const pacienteAlmacenado = await paciente.save();
     res.json(pacienteAlmacenado);
@@ -13,8 +13,8 @@ const agregarPaciente = async (req, res) => {
 
 const obtenerPacientes = async (req, res) => {
   const pacientes = await Paciente.find()
-    .where("veterinario")
-    .equals(req.veterinario);
+    .where("doctor")
+    .equals(req.doctor);
 
   res.json(pacientes);
 };
@@ -27,7 +27,7 @@ const obtenerPaciente = async (req, res) => {
     return res.status(404).json({ msg: "No Encontrado" });
   }
 
-  if (paciente.veterinario._id.toString() !== req.veterinario._id.toString()) {
+  if (paciente.doctor._id.toString() !== req.doctor._id.toString()) {
     return res.json({ msg: "Accion no válida" });
   }
 
@@ -42,15 +42,16 @@ const actualizarPaciente = async (req, res) => {
     return res.status(404).json({ msg: "No Encontrado" });
   }
 
-  if (paciente.veterinario._id.toString() !== req.veterinario._id.toString()) {
+  if (paciente.doctor._id.toString() !== req.doctor._id.toString()) {
     return res.json({ msg: "Accion no válida" });
   }
 
   // Actualizar Paciente
   paciente.nombre = req.body.nombre || paciente.nombre;
-  paciente.propietario = req.body.propietario || paciente.propietario;
+  paciente.apellido = req.body.apellido || paciente.apellido;
   paciente.email = req.body.email || paciente.email;
   paciente.fecha = req.body.fecha || paciente.fecha;
+  paciente.telefono = req.body.telefono || paciente.telefono;
   paciente.sintomas = req.body.sintomas || paciente.sintomas;
 
   try {
@@ -69,7 +70,7 @@ const eliminarPaciente = async (req, res) => {
     return res.status(404).json({ msg: "No Encontrado" });
   }
 
-  if (paciente.veterinario._id.toString() !== req.veterinario._id.toString()) {
+  if (paciente.doctor._id.toString() !== req.doctor._id.toString()) {
     return res.json({ msg: "Accion no válida" });
   }
 
