@@ -51,5 +51,5 @@ doctorSchema.methods.comprobarPassword = async function (
   return await bcrypt.compare(passwordFormulario, this.password);
 };
 
-const Doctor = mongoose.model("Doctor", veterinarioSchema);
+const Doctor = mongoose.model("Doctor", doctorSchema);
 export default Doctor;
