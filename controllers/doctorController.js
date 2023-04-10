@@ -16,7 +16,7 @@ const registrar = async (req, res) => {
 
   try {
     // Guardar un Nuevo Veterinario
-    const doctor = new Veterinario(req.body);
+    const doctor = new Doctor(req.body);
     const doctorGuardado = await doctor.save();
 
     // Enviar el email
@@ -90,7 +90,7 @@ const autenticar = async (req, res) => {
 const olvidePassword = async (req, res) => {
   const { email } = req.body;
 
-  const existeVeterinario = await Doctor.findOne({ email });
+  const existeDoctor = await Doctor.findOne({ email });
   if (!existeDoctor) {
     const error = new Error("El Usuario no existe");
     return res.status(400).json({ msg: error.message });
