@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import Doctor from "../models/Doctor.js";
 
 const checkAuth = async (req, res, next) => {
-  let token;
+  let token; 
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
